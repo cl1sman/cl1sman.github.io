@@ -1,8 +1,8 @@
 # main links
 main:
   - title: "Malware Analysis"
-    url: /categories/#malware
+    url: /categories/#malware-analysis
   - title: "Threat Intel"
-    url: /categories/#threat
+    url: /categories/#threat-intel
   - title: "All Categories"
     url: /categories
