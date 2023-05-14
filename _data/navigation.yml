@@ -2,8 +2,8 @@
 main:
   - title: "Malware Analysis"
     url: /categories/#malware-analysis
-  - title: "Threat Intel"
-    url: /categories/#threat-intel
+  - title: "Threat Breakdown"
+    url: /categories/#threat-breakdown
   - title: "All Categories"
     url: /categories
   - title: "All Tags"
