@@ -158,16 +158,16 @@ print(base64.b64decode(ENCODED_POWERSHELL2).replace(b'\x00',b'').decode())
 
 
 The script will do 3 things:
-1. It will Create a new System32 Folder, it will then copy taskmgr.exe from the original System32 folder to the freshly created System32 folder.<br>
+- It will Create a new System32 Folder, it will then copy taskmgr.exe from the original System32 folder to the freshly created System32 folder.<br>
 what is special about this that it will duplicate the Windows folder of the user and create an empty System32 Folder, If we run the commands manually we can see that another Windows Folder is created with all the content of the original Windows folder but the System32 folder is empty.
 
 ![image.png](/assets/images/PlutoCrypt-CryptoJoker-Varient/6.png)
 
 ![image.png](/assets/images/PlutoCrypt-CryptoJoker-Varient/7.png)
 
-2. Another payload will be downloaded from the attacker server and will be saved on the impersonated System32 folder by the name `uxtheme.dll`
-3. The script will execute `taskmgr.exe`
-# DLL Side Loading
+- Another payload will be downloaded from the attacker server and will be saved on the impersonated System32 folder by the name `uxtheme.dll`
+- The script will execute `taskmgr.exe`
+### DLL Side Loading
 If we take a look at the imports of `taskmgr.exe` we can find that it loads `uxtheme.dll`:
 
 ![image.png](/assets/images/PlutoCrypt-CryptoJoker-Varient/8.png)
@@ -184,7 +184,7 @@ cmd /c cd %appdata% & SCHTASKS /Create /TN \"onedrive\" /XML \"x.xml\" & SCHTASK
 
 The command will create yet another task with the name of **onedrive\\** with the content of **x.xml** which was fetched from the attacker server at alongside with **task.xml** and it will execute the task.
 
-# x.xml
+## x.xml
 Let's observe the content of the xml file:
 ```xml
 <?xml version="1.0" encoding="UTF-16"?>
@@ -235,7 +235,7 @@ Let's observe the content of the xml file:
 ```
 
 As we can see this task contains 3 different PowerShell scripts that will be executed. Let's break them one by one:
-## AntiVirus/EDR Evasion
+### AntiVirus/EDR Evasion
 
 
 ```python
@@ -285,7 +285,7 @@ The second script will have several activitires:
 5. The script will uninstall the applications based on the product names.
 
 The purpose of the script is to remove AV related products to ensure that nothing will flag the rest of the execution flow.<br>
-## Final Payload Fetching
+### Final Payload Fetching
 let's analyze the last script:
 
 
@@ -309,7 +309,7 @@ This final script has several things it does:
 2. Downloads 2 files from the remote server: `pl.exe` and `enc.xml`
 3. Creates a task with the name of `enc` alongside with the content of `enc.xml` and then executes it.
 
-# enc.xml
+## enc.xml
 Once again, let's check the content of the downloaded xml file:
 ```xml
 <?xml version="1.0" encoding="UTF-16"?>
