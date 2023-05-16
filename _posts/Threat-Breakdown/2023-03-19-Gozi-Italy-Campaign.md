@@ -5,18 +5,19 @@ header:
   teaser: /assets/images/Gozi-Itallian-Shellcode-Dance/logo.png
   overlay_image: /assets/images/Gozi-Itallian-Shellcode-Dance/logo.png
   overlay_filter: 0.5
-ribbon: DarkSlateGray
+ribbon: DarkSlateBlue
 excerpt: "Breakdown of a recent Gozi trojan Italian targeted campaign"
 description: "Breakdown of a recent Gozi trojan Italian targeted campaign"
 categories:
-  - Malware Analysis
+  - Threat Breakdown
 tags:
   - Gozi
   - Jscript 
   - ShellCode
   - IDA
-  - APC Injection
+  - Injection
   - Config Extraction
+  - Yara
 toc: true
 toc_sticky: true
 toc_label: "On This Blog"
@@ -386,7 +387,7 @@ for data in dataStructs:
 
 # Yara Rule
 The below rule was created to hunt down unpacked binaries:
-```json
+```vb
 import "pe"
 rule Win_Gozi_JJ {
     meta:
