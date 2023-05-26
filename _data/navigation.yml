@@ -4,7 +4,7 @@ main:
     url: /categories/#malware-analysis
   - title: "Threat Breakdown"
     url: /categories/#threat-breakdown
-  - title: "All Categories"
-    url: /categories
+  - title: "Threat Hunting"
+    url: /categories/#threat-hunting
   - title: "All Tags"
     url: /tags
