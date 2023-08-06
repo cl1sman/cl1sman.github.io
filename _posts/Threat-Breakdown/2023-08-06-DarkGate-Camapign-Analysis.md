@@ -130,7 +130,7 @@ Next, I will use [BlobRunner](https://github.com/OALabs/BlobRunner) to invoke th
 
 The loader we’ve dumped will be in charge of decoding and executing part of the junk data stored inside of the AutoIT script (After decoding we will face with the final binary which is the ***DarkGate*** loader)
 
-The loader requires a a command line argument which will be the path to the AutoIT script. The loader will check for the argument and if it’s not ends with ********.au3******** or the executable can’t get a handle for the file a message box with the text “******bin 404******” will appear and the loader will terminate itself.
+The loader requires a a command line argument which will be the path to the AutoIT script. The loader will check for the argument and if it’s not ends with **.au3** or the executable can’t get a handle for the file a message box with the text “**bin 404**” will appear and the loader will terminate itself.
 
 ![Untitled](/assets/images/DarkGate-Campaign-Analysis/12.png)
 
@@ -206,7 +206,7 @@ The first argument passed to the function is the container for the return value,
 
 These hard-coded strings are part of a custom Base64 decoding routine. I'd like to extend my personal thanks to [@rivitna2](https://twitter.com/rivitna2) for correcting me when initially published the strings decoding script.
 
-[https://twitter.com/rivitna2/status/1686309211163021312?ref_src=twsrc%5Etfw">August](https://twitter.com/rivitna2/status/1686309211163021312?ref_src=twsrc%5Etfw">August)
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">It isn&#39;t encryption, it&#39;s Base64 encoding with a non-standard table :-)</p>&mdash; rivitna (@rivitna2) <a href="https://twitter.com/rivitna2/status/1686309211163021312?ref_src=twsrc%5Etfw">August 1, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 The first batch of decoded strings represents all the strings utilized by DarkGate during its execution. Some of these strings looks like notification messages sent to the C2, such as:
 
@@ -379,12 +379,11 @@ print(f'[+] Output: {plainData}')
 ```
 
 Below is the output of the script for these parameters:
-
+```
 - LIST = **zLAxuU0kQKf3sWE7ePRO2imyg9GSpVoYC6rhlX48ZHnvjJDBNFtMd1I5acwbqT**+=
 - DATA = **FpOkFahzFpOuNjxuFsfNFsOAMpOuNvkuFQrcHwtMDfmlHahzFpOuNqOuFs7uFsOAJqOuNj5uFs3kFsOAFpOuNqxuFs3WFsOAjjOuNvkuFsSuFsOLNjOuNjkuFs70FsOAMpOuNj3uFs3WFsOANpOuNqSuFsSuFsOxMsOuFq3uFsYzFsO0FsOuNskuFs7sFsOxNsOuNjkuFs70FsOAjpOuNjyuFsf5FsO0FsOuNpOuFs3UFsOAFqOuNvSuFs3UFsOANqOuNjkuFsSuFsO0jsOuFjOuFskLFsOzjpOuNpSuFsxLFsOzNqOuNs5uFskkFsOLNsOuNskuFsk0FsOzNpOuNsxuFsSuFsO0jsOuFjOuFskxFsOxFjOuNjyuFs7uFsOxFsOuNjkuFs3zFsO0FsOuNqkuFs7kFsOAMpOuNvkuFs3xFsO0FsOuN3xuFskkFsOzMpOuFjOuFskxFsOxFjOuNjyuFs7uFsOxFsOuNjkuFs70FsO0FsOuNj3uFs70FsOAjjOuNvxuFsSuFsOxNqOuNq7uFs7xFsO0jpOuNjkuFs7sFsOANpOuNvxuFs7kFsOAMpOuFvkuFs3kFsOAjjOuNvxuFQh0NsOAMsmQB9nzl9h2JcD0lVRl6HDylgok4aS253G04cmeCc0g4W52JWOs13oS6H0krsANFsOAMpOuNjYuFs70FsOAjjOuNqYuFsftFsOANjOuNqxuFsSuFsOzFjOuNjyuFs7kFsOAMpOuNjYuFsSuFsOzNsOuNj5uFs7kFsOxFsOuNvYuFs3UFsOxMpOuFjOuFsxUFsOANsOuNjyuFs7uFsOxNsOuNjkuFs70FsRQMsyWFJRcJZrh89ne4aEk1syu1fR04TO2hs3z13GL89re1syWFsxUrfIP6arQFp3WFsxzNpYLFar64HBG4aEGrsxGNZhursRQNqMWFe**
 - ID = **GEabbfEcbKBadGaccCDCaGKccGGfKHKG**
 
-```
 1033|410064006D0069006E00|MSXGLQPS|4100700070006C00690063006100740069006F006E0020005600650072006900660069006500720020007800360034002000450078007400650072006E0061006C0020005000610063006B0061006700650020002D00200055004E00520045004700490053005400450052004500440020002D002000570072006100700070006500640020007500730069006E00670020004D0053004900200057007200610070007000650072002000660072006F006D0020007700770077002E006500780065006D00730069002E0063006F006D00|240681|Intel Core Processor (Broadwell) @ 8 Cores|4D006900630072006F0073006F0066007400200042006100730069006300200044006900730070006C006100790020004100640061007000740065007200|8192 MB|Windows 10 Pro  x64 Build 19041|Yes||1690445353|Uno.own|4.6|0|0|7891
 ```
 
