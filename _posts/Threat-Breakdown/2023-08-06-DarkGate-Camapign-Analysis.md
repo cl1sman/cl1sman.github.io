@@ -48,8 +48,6 @@ I’ve created a diagram that demonstrates the execution flow of the campaign:
 
 # Geofence Check
 
-To be honest, I still can’t tell what are the requirements to pass the checks conducted by the adversary, I’ve checked some of the URL’s in URLscan.io and found out that the ones that managed to retrieve a payload had the `refresh` header in the response (which makes sense) , the header contained the URL to the payload download, for example:
-
 Honestly, I'm still trying to figure out what checks need to be passed to get through the geofence set by the adversary. After examining some of the URLs on URLscan.io, I discovered that those which were successful in obtaining a payload featured the `refresh` header in their response (makes sense). This header included the URL needed to download the payload, for instance:
 
 ![Untitled](/assets/images/DarkGate-Campaign-Analysis/3.png)
