@@ -1,10 +1,6 @@
 # main links
 main:
-  - title: "Malware Analysis"
-    url: /categories/#malware-analysis
-  - title: "Threat Breakdown"
-    url: /categories/#threat-breakdown
-  - title: "Threat Hunting"
-    url: /categories/#threat-hunting
+  - title: "CTFs"
+    url: /categories/#ctfs
   - title: "All Tags"
     url: /tags
