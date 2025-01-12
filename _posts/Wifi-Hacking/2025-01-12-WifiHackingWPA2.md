@@ -59,11 +59,47 @@ You can find more details about the **4-Way Handshake** in WPA2 [here](https://n
 
 ## Set up the environment
 Primeiramente, conectamos o adapatador USB no computador ou notebook.
-Adicionamos o adaptador nos dispositivos de entrada da máquina virtual
+Adicionamos o adaptador nos dispositivos de entrada da máquina virtual, nesse caso estou usando o Virtual Box
 <div style="text-align: center;">
-  <img src="/assets/images/Wifi-Hacking/opcoes_vb.png" alt="4-Way Handshake Diagram">
+  <img src="/assets/images/Wifi-Hacking/vb_config.png" alt="4-Way Handshake Diagram">
 </div>
-![alt text](image.png)
+  
+Selecione o seu adaptador dentre os seus dispositivos USBs
+
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/vb_select.png" alt="4-Way Handshake Diagram">
+</div>
+
+Após ser adicionado, clique em OK e inicie sua máquina virtual.
+
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/vb_ok.png" alt="4-Way Handshake Diagram">
+</div>
+
+### Linux Terminal
+
+Intale o  wireless device driver
+```bash
+apt install realtek-rtl88xxau-dkms
+```
+
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_install_drive.png" alt="4-Way Handshake Diagram">
+</div>
+
+Check se o Kali detectou o wireless adapter com o seguinte comando
+```bash
+iwconfig
+```
+
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_iwconfig.png" alt="4-Way Handshake Diagram">
+</div>
+
+E podemos ver a inteface "wlan0" agora está ativa.
+
+### Modo Monitor
+
 
 ## Listen to nearby networks
 We will use tools to "listen" to nearby networks and identify our target.
