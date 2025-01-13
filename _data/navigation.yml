@@ -1,6 +1,10 @@
 # main links
 main:
+  - title: "Security Content"
+    url: /categories/#security-content  
   - title: "CTFs"
     url: /categories/#ctfs
+  - title: "Wi-fi Hacking"
+    url: /categories/#wifi-hacking
   - title: "All Tags"
     url: /tags
