@@ -279,6 +279,8 @@ One problem that may occur is that the password is not included in the wordlist.
 - [Cupp](https://github.com/Mebus/cupp)
 - [CuppBR (for Brazil)](https://github.com/Rfarias1734/cuppbr)
 
+---
+
 # **Summary of Commands**
 
 ```bash
@@ -318,6 +320,8 @@ pw-inspector -i /usr/share/wordlists/rockyou.txt -o optimized.txt -m 8 -M 63
 # Perform brute force on the handshake file
 aircrack-ng -w optimized.txt ./wifi_testing-01.cap 
 ```
+
+---
 
 # **Credits**
 
