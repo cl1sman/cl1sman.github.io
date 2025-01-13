@@ -333,5 +333,3 @@ This post was created with the intent of sharing knowledge in the field of infor
 - [RedFoxSec Blog - Wi-Fi Hacking (Part 1)](https://redfoxsec.com/blog/wi-fi-hacking-part-1/)  
 - [Understanding RockYou.txt - Keeper Security](https://www.keepersecurity.com/blog/pt-br/2023/08/04/understanding-rockyou-txt-a-tool-for-security-and-a-weapon-for-hackers/)  
 - [WPA and WPA2 4-Way Handshake Explanation](https://networklessons.com/wireless/wpa-and-wpa2-4-way-handshake)
-
-
