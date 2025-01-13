@@ -7,7 +7,7 @@ header:
   overlay_filter: 0.5
 ribbon: OliveDrab
 excerpt: "Discovering WPA2 Wi-Fi passwords on Linux using airodump-ng, airmon-ng, and aircrack-ng."
-description: "Discovering WPA2 Wi-Fi passwords on Linux using airodump-ng, airmon-ng, and aircrack-ng"
+description: "Discovering WPA2 Wi-Fi passwords on Linux using airodump-ng, airmon-ng and aircrack-ng"
 categories:
   - Wi-fi Hacking
 tags:
