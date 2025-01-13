@@ -319,7 +319,6 @@ pw-inspector -i /usr/share/wordlists/rockyou.txt -o optimized.txt -m 8 -M 63
 aircrack-ng -w optimized.txt ./wifi_testing-01.cap 
 ```
 
-markdown_content = """
 ## **Capture the Handshake**
 
 When I reconnected my device to the network, **airodump-ng** successfully captured the handshake. You can confirm this when the handshake appears in the top-right corner of the terminal, as highlighted in the image below:
