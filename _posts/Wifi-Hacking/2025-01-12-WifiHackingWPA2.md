@@ -237,3 +237,7 @@ With the handshake captured, we will perform a brute force attack on the hash to
 ## Resumo dos comandos
 
 ## Créditos
+https://tecnoblog.net/responde/o-que-e-wep-wpa-wpa2-wpa3-diferencas-protocolo-seguranca-wi-fi/
+https://www.aircrack-ng.org/doku.php?id=airodump-ng
+https://www.youtube.com/watch?v=WfYxrLaqlN8
+https://redfoxsec.com/blog/wi-fi-hacking-part-1/
