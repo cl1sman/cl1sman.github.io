@@ -31,15 +31,19 @@ For this tutorial, I’m using the TP-Link USB 150Mbps TL-WN722N Wireless Adapte
 # Understanding Wi-Fi and WPA2
 Before we begin, it’s important to clarify some key concepts:
 
-Wi-Fi, the technology that enables wireless connections between devices, relies on encryption protocols to secure the communication. These protocols have evolved over time, starting with WEP (Wired Equivalent Privacy), followed by WPA (Wi-Fi Protected Access), WPA2, and the latest, WPA3.
+Wi-Fi relies on encryption protocols to secure the communication. These protocols have evolved over time, starting with WEP (Wired Equivalent Privacy), followed by WPA (Wi-Fi Protected Access), WPA2, and the latest, WPA3.
 
 Currently, the most widely used standard is WPA2, an updated version of WPA. WPA2 is based on the Robust Security Network (RSN) mechanism and operates in two modes:
 
  - WPA2-PSK (Pre-Shared Key): Commonly used in home environments.
  - WPA2-EAP (Extensible Authentication Protocol): Designed for organizational or enterprise use.  
 
-In this post, we will focus specifically on WPA2-PSK, the mode typically used in residential settings.
+In this post, we focus on WPA2-PSK, which uses a process called the 4-Way Handshake to establish a secure connection. During this handshake, the router and client verify they share the same password and generate encryption keys. While the actual password is not transmitted, the handshake contains a hash of the password, which can be intercepted and brute-forced to discover the key.
 
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/wpa-4-way-handshake-workflow.png" alt="4-Way Handshake Diagram">
+</div>
+<br>
 # How the Attack Works
 
 For better understanding, here’s a brief theoretical explanation:
@@ -50,11 +54,7 @@ For better understanding, here’s a brief theoretical explanation:
 - [**Capture the handshake**](#capture-the-handshake): When the device reconnects, we will intercept the WPA2 handshake, which contains the hash of the password.
 - [**Perform brute force on the hash**](#perform-brute-force-on-the-hash): With the handshake captured, we will perform a brute force attack on the hash to try to discover the password.
 
-You can find more details about the **4-Way Handshake** in WPA2 [here](https://networklessons.com/wireless/wpa-and-wpa2-4-way-handshake).
 
-<div style="text-align: center;">
-  <img src="/assets/images/Wifi-Hacking/wpa-4-way-handshake-workflow.png" alt="4-Way Handshake Diagram">
-</div>
 
 
 ## Set up the environment
@@ -76,9 +76,11 @@ Após ser adicionado, clique em OK e inicie sua máquina virtual.
   <img src="/assets/images/Wifi-Hacking/vb_ok.png" alt="4-Way Handshake Diagram">
 </div>
 
-### Linux Terminal
 
-Intale o  wireless device driver
+### Monitor Mode
+
+To enable monitor mode, you first need to install the wireless device driver:
+
 ```bash
 apt install realtek-rtl88xxau-dkms
 ```
@@ -86,8 +88,8 @@ apt install realtek-rtl88xxau-dkms
 <div style="text-align: center;">
   <img src="/assets/images/Wifi-Hacking/kali_install_drive.png" alt="4-Way Handshake Diagram">
 </div>
-
-Check se o Kali detectou o wireless adapter com o seguinte comando
+<br>
+Once the driver is installed, verify if Kali Linux detects the wireless adapter using the following command:
 ```bash
 iwconfig
 ```
@@ -95,20 +97,143 @@ iwconfig
 <div style="text-align: center;">
   <img src="/assets/images/Wifi-Hacking/kali_iwconfig.png" alt="4-Way Handshake Diagram">
 </div>
+<br>
+As shown in the output, the "wlan0" interface is now active and ready for use.
 
-E podemos ver a inteface "wlan0" agora está ativa.
+Next, we need to check and stop any processes that could interfere with enabling monitor mode. Use the following commands:
+```bash
+airmon-ng check
+airmon-ng check kill
+```
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_airmonCheck.png" alt="4-Way Handshake Diagram">
+</div>
+<br>
 
-### Modo Monitor
+Now, we can enable monitor mode on our adapter with the following command:
 
+```bash
+airmon-ng start wlan0
+```
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_airmonStart.png" alt="4-Way Handshake Diagram">
+</div>
+<br>
+
+To verify if monitor mode is active, you can use the following command:
+
+```bash
+iwconfig wlan0
+```
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_iwconfig_monitorMode.png" alt="4-Way Handshake Diagram">
+</div>
+<br>
 
 ## Listen to nearby networks
-We will use tools to "listen" to nearby networks and identify our target.
+Using the following command, we will list all the nearby networks that the adapter can detect:
 
-## Disconnect a device from the network
-We will send deauthentication packets to force a connected device to disconnect from the network.
+```bash
+airodump-ng wlan0  
+```
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_airodump.png" alt="4-Way Handshake Diagram">
+</div>
+<br>
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_airodumpResults.png" alt="4-Way Handshake Diagram">
+</div>
+<br>
 
-## Capture the handshake
-When the device reconnects, we will intercept the WPA2 handshake, which contains the hash of the password.
+To analyze the results, it's important to understand the following fields:
+
+| **Field** | **Description** |
+|-----------|-----------------|
+| **BSSID** | The MAC address of the access point |
+| **ENC**   | The encryption algorithm used (e.g., WPA2). This is discussed in the topic [Understanding Wi-Fi and WPA2](#understanding-wi-fi-and-wpa2). For this example, we are focusing on WPA2 networks. |
+| **AUTH**  | The authentication protocol. As noted earlier, WPA2 networks typically display "PSK" for "Pre-Shared Key," which is common in residential environments. |
+| **ESSID** | The name of the wireless network |
+
+
+For more detailed information about **airodump-ng**, you can check [here.](https://www.aircrack-ng.org/doku.php?id=airodump-ng)
+
+
+**Note:** It is possible that the network you are targeting does not broadcast its name (ESSID). In this case, the following command can be used to detect hidden networks:
+```bash
+airodump-ng wlan0 --essid ""
+```
+
+In this test, the network **"EverHouse 2.4"** will be our target:
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_everhouse.png" alt="Target Network: EverHouse 2.4">
+</div>
+
+Next, we will capture the packets going to the chosen network and save the data in a file, which will store the handshake hash for further cracking:
+
+```bash
+airodump-ng wlan0 -d <BSSID> -c 5 -w wifi_testing
+```
+
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_everhouseCommand.png" alt="Airodump-ng Command to Capture Packets">
+</div>  
+<br>  
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_everhouseResults.png" alt="Airodump-ng Results">
+</div>  
+
+At this point, no handshake (connection establishment between a user and the network) has been captured yet. To force a handshake, we will deauthenticate a user from the network and intercept the handshake in the next step.
+
+## **Deauthenticate a Device from the Network**
+
+In the previous output, the bottom section lists the devices connected to the Wi-Fi network specified by the BSSID. The **"STATION"** field represents the MAC address of each connected device, and we will use it to specify which device we want to deauthenticate. Open a new terminal and use the following command:
+
+```bash
+sudo aireplay-ng --deauth 0 -a <BSSID> -c <MAC> wlan0
+```
+
+I checked the MAC address of my device in the Wi-Fi settings to specify which device I wanted to disconnect from the network:
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_deauthError.png" alt="Deauthentication Error">
+</div>
+
+However, during my tests, I encountered the error shown above. To resolve this, I returned to the terminal monitoring the target network and added the flag `--channel 4` to lock the channel:
+
+```bash
+airodump-ng --channel 4 wlan0 -d <BSSID> -c 5 -w wifi_testing
+```
+
+**Note:** If you need to perform this step, remember to delete the unused files generated earlier. In my case, I used the command:
+```bash
+rm *
+```
+(This was safe because the directory only contained files from this test.)
+
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_airodumpChannel4.png" alt="Channel Lock Fix">
+</div>
+
+After making this adjustment, the deauthentication command worked correctly:
+
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_deauthSuccess.png" alt="Deauthentication Successful">
+</div>
+
+At this point, I observed that my device was disconnected from the network.
+
+
+
+## **Capture the Handshake**
+
+When I reconnected my device to the network, **airodump-ng** successfully captured the handshake. You can confirm this when the handshake appears in the top-right corner of the terminal, as highlighted in the image below:
+
+<div style="text-align: center;">
+  <img src="/assets/images/Wifi-Hacking/kali_airodump_handshake.png" alt="Handshake Captured">
+</div>
 
 ## Perform brute force on the hash
 With the handshake captured, we will perform a brute force attack on the hash to try to discover the password.
+
+## Resumo dos comandos
+
+## Créditos
