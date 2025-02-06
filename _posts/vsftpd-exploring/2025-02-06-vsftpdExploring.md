@@ -3,9 +3,9 @@
 title: "Exploiting vsftpd 2.3.4 on Metasploitable 2 using Metasploit" 
 classes: wide 
 header: 
-    teaser: /assets/images/metasploit/vulnerabilidade vsftpd 2.3.4.jpeg 
-    overlay\_image: /assets/images/metasploit/logo.png 
-    overlay\_filter: 0.5 
+    teaser: assets/images/metasploit/vulnerabilidade vsftpd 2.3.4.jpeg 
+    overlay\image: assets/images/metasploit/vulnerabilidade vsftpd 2.3.4.jpeg 
+    overlay_filter: 0.5 
 ribbon: Red 
 excerpt: "A step-by-step guide to exploiting the vsftpd 2.3.4 backdoor on Metasploitable 2 using Kali Linux and Metasploit." 
 description: "A step-by-step guide to exploiting the vsftpd 2.3.4 backdoor on Metasploitable 2 using Kali Linux and Metasploit." 
@@ -18,9 +18,9 @@ tags:
     - Nmap
     - Cybersecurity 
 toc: true 
-toc\_sticky: true 
-toc\_label: "On This Blog" 
-toc\_icon: "biohazard"
+toc_sticky: true 
+toc_label: "On This Blog" 
+toc_icon: "biohazard"
 
 ---
 
