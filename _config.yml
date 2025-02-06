@@ -15,11 +15,11 @@
 minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 # Site Settings
 locale                   : "en-US"
-title                    : "Thena Posts"
+title                    : "M4rk101 Posts"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Thena"
-description              : "Cybersecurity Blog"
+name                     : "M4rk101"
+description              : "A learning journal on cybersecurity and ethical hacking, exploring challenges, CTFs, and security concepts."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -103,19 +103,19 @@ analytics:
 
 # Site Author
 author:
-  name             : "Thena"
-  avatar           : "/assets/images/main/avatar.png"
-  bio              : "Exploring the Cybersecurity Landscape"
+  name             : "M4rk101"
+  avatar           : "/assets/images/main/metaverse.png"
+  bio              : "Stay Curious"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:fernaandapessoa@outlook.com"
+      url: "mailto:contatoclisman@outlook.com"
     - label: "GitHub"   
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/fernandapessoa/"
+      url: "https://github.com/cl1sman/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/fernaandapessoa/"
+      url: "https://www.linkedin.com/in/clismanmariano/"
 
 # Site Footer
 footer:
