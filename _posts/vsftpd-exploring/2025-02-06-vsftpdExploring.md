@@ -4,7 +4,7 @@ title: "Exploiting vsftpd 2.3.4 on Metasploitable 2 using Metasploit"
 classes: wide 
 header: 
     teaser: assets/images/metasploit/vulnerabilidade vsftpd 2.3.4.jpeg 
-    overlay\image: assets/images/metasploit/vulnerabilidade vsftpd 2.3.4.jpeg 
+    overlay_image: assets/images/metasploit/vulnerabilidade vsftpd 2.3.4.jpeg 
     overlay_filter: 0.5 
 ribbon: Red 
 excerpt: "A step-by-step guide to exploiting the vsftpd 2.3.4 backdoor on Metasploitable 2 using Kali Linux and Metasploit." 
@@ -125,4 +125,4 @@ This is a basic **proof of concept (PoC)** of how an attacker can exploit outdat
 🔗 Metasploit Docs: [https://docs.metasploit.com/](https://docs.metasploit.com/)\
 🔗 Nmap: [https://nmap.org/](https://nmap.org/)
 
-Would you like to see more tutorials like this? Let me know in the comments! 🚀🔍 #CyberSecurity #EthicalHacking #Metasploit #PenTesting
+Would you like to see more tutorials like this? Let me know in the comments! 🚀🔍
