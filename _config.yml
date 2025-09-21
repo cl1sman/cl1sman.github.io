@@ -15,10 +15,10 @@
 minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 # Site Settings
 locale                   : "en-US"
-title                    : "M4rk101 Posts"
+title                    : "Cl1sman"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "M4rk101"
+name                     : "Cl1sman"
 description              : # "A learning journal on cybersecurity and ethical hacking, exploring challenges, CTFs, and security concepts."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -103,7 +103,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "M4rk101"
+  name             : "Cl1sman"
   avatar           : "/assets/images/main/avatar.jpeg"
   bio              : "Stay Curious"
   links:
